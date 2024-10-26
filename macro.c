@@ -115,9 +115,10 @@ void main(){
                             k++;
                         }
                         tempbuffer[ptr] = '\0';
+                        k--;
                         for(int t=0;t<sizeof(args);t++){
                             if(strcmp(tempbuffer,namtab[a].params[t])==0){
-                                strcat(output,args[t]); 
+                                 strcat(output,args[t]); 
                                 ptr=0;
                                 break;
                             }

@@ -3,5 +3,5 @@ MOVER &par1,&par2
 ADD &par1,&par3
 MOVEM &par1,&par2
 MEND
-RDBUFF f3,buf,lt
+RDBUFF &f3,&buf,&lt
 END
