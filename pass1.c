@@ -27,6 +27,8 @@ void main(){
     char line[200], label[50], operand[50], opcode[50];
     int parts,start_adr,counter,t;
     FILE *fp = fopen("pass1.txt","r");
+    FILE *fp1 = fopen("symtab.txt","w");
+    FILE *fp2 = fopen("outputpass1.txt","w");
     while(fgets(line,200,fp)){
         parts = sscanf(line,"%s %s %s",label,opcode,operand);
         if(parts==2){
@@ -79,15 +81,16 @@ void main(){
         }
 
     }
-    printf("Symbol Table:\n");
-    printf("Name\tAddress\n");
+    fprintf(fp1,"Symbol Table:\n");
+    fprintf(fp1,"Name\tAddress\n");
     for (int i = 0; i < sym_ptr; i++) {
-        printf("%s\t%x\n", symtabs[i].name, symtabs[i].address);
+        fprintf(fp1,"%s\t%x\n", symtabs[i].name, symtabs[i].address);
     }
-    printf("\nInstructions:\n");
-    printf("Address\tLabel\tOpcode\tOperand\n");
+    printf("\nlength: %d\n",counter-start_adr-3);
+    fprintf(fp2,"\nInstructions:\n");
+    fprintf(fp2,"Address\tLabel\tOpcode\tOperand\n");
     for (int i = 0; i < ins_ptr; i++) {
-        printf("%04x\t%s\t%s\t%s\n", instructions[i].address, instructions[i].label, instructions[i].opcode, instructions[i].operand);
+        fprintf(fp2,"%04x\t%s\t%s\t%s\n", instructions[i].address, instructions[i].label, instructions[i].opcode, instructions[i].operand);
     }
 
      

@@ -1,0 +1,7 @@
+Symbol Table:
+Name	Address
+ALPHA	100f
+ONE	1013
+TWO	1015
+BYTE	1018
+FUN	101e
