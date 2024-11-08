@@ -81,9 +81,16 @@ void main(){
         }
         else{
             if(strcmp(label,"WORD")==0){
-                fprintf(fp3,"%s",addzero(operand));
+                fprintf(fp3,"%s^",addzero(operand));
                 strcat(line,addzero(operand));
                 strcat(line,"\t");
+            }
+            else if (strcmp(label,"BYTE")==0){
+                for(int k = 2;k<strlen(operand)-1;k++){
+                    fprintf(fp3,"%x",operand[k]);
+                    
+                }
+                fprintf(fp3,"^");
             }
         }
         strcat(line,firstline);
