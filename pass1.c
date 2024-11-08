@@ -24,11 +24,12 @@ void addtosymtab(char label[100],int add){
     sym_ptr++;
 }
 void main(){
-    char line[200], label[50], operand[50], opcode[50];
+    char line[200], label[50], operand[50], opcode[50], first_line[200];
     int parts,start_adr,counter,t;
     FILE *fp = fopen("pass1.txt","r");
     FILE *fp1 = fopen("symtab.txt","w");
     FILE *fp2 = fopen("outputpass1.txt","w");
+    FILE *fp3 = fopen("length.txt","w");
     while(fgets(line,200,fp)){
         parts = sscanf(line,"%s %s %s",label,opcode,operand);
         if(parts==2){
@@ -45,6 +46,7 @@ void main(){
             t = (int)strtol(operand,NULL,16);
             start_adr = t;
             counter = start_adr;
+            strcpy(first_line,line);
             continue;
         }
         strcpy(instructions[ins_ptr].operand, operand);
@@ -81,14 +83,11 @@ void main(){
         }
 
     }
-    fprintf(fp1,"Symbol Table:\n");
-    fprintf(fp1,"Name\tAddress\n");
     for (int i = 0; i < sym_ptr; i++) {
         fprintf(fp1,"%s\t%x\n", symtabs[i].name, symtabs[i].address);
     }
-    printf("\nlength: %d\n",counter-start_adr-3);
-    fprintf(fp2,"\nInstructions:\n");
-    fprintf(fp2,"Address\tLabel\tOpcode\tOperand\n");
+    fprintf(fp3,"%d",counter-start_adr-3);
+    fprintf(fp2,"%s",first_line);
     for (int i = 0; i < ins_ptr; i++) {
         fprintf(fp2,"%04x\t%s\t%s\t%s\n", instructions[i].address, instructions[i].label, instructions[i].opcode, instructions[i].operand);
     }
