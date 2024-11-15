@@ -44,7 +44,7 @@ int checkmacro(char line[]){
     return 0;
 }
 
-void getmacroparams(char line[], char params[][50]){
+void getmacroparams(char line[], char params[5][50]){
     char buff[10];
     int j = 0, k = 0;
     for(int i = 0; i < strlen(line); i++){
