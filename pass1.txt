@@ -1,11 +1,11 @@
 COPY	START	1000
-        LDA	    ALPHA
-        ADD	    ONE
-        SUB	    TWO
-        JMP	    FUN
+        LDA	 ALPHA
+        ADD	 ONE
+        SUB	 TWO
+        JMP	FUN
 ALPHA	BYTE	C'KLNC'
-ONE	    RESB	2
-TWO	    WORD	5
+ONE	RESB	2
+TWO	WORD	5
 BYTE	RESW	2
-FUN	    BYTE	X'XYZ'
+FUN	BYTE	X'XYZ'
         END

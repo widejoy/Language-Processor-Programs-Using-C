@@ -52,12 +52,12 @@ void main(){
     FILE *fp4 = fopen("end.txt","w");
     char firstline[100], programname[50], start_adr_str[50], dummy[50], length[10];
     char start[100],opcode[100],label[100], last[10],operand[50], output[1000] = {0}, line[100];
-    int t;
+    int t; 
     fgets(firstline, 200, fp);
     fread(length,1,10,fp2);
     sscanf(firstline,"%s %s %s",programname,dummy,start_adr_str);
-    strcpy(length,addzero(length));
-    fprintf(fp1,"H^%s %s^%s",programname,addzero(start_adr_str),length);
+    fprintf(fp1,"H^%s %s^%s",programname,addzero(start_adr_str),addzero(length));
+    fclose(fp1);
     fgets(firstline,200,fp);
     sscanf(firstline,"%s %s %s",start,opcode,label);
     strcpy(last,getsymtabadd(label));
